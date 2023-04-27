@@ -33,8 +33,8 @@ class IndexController(
     fun putEventResult(@PathVariable id: Long, @RequestBody eventResultDto: EventResultDto) =
         eventService.eventResult(id, eventResultDto)
 
-    @PostMapping("/api/chooseteam/", MediaType.APPLICATION_JSON_VALUE)
-    fun teamChoosing(teamDto: TeamDto): List<TeamEntity> {
-        TODO() //return teamService.choosingteam(teamDto).map(TeamEntity::toDto())
+    @GetMapping("/api/team/{name}", produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun teamChoosing(@PathVariable name : String) : List<TeamDto> {
+        return teamService.choosingTeam(name).map(TeamEntity::toDto)
     }
 }

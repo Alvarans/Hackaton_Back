@@ -5,6 +5,7 @@ import ru.pnzgu.hackapp.dto.EventDto
 import ru.pnzgu.hackapp.dto.EventResultDto
 import ru.pnzgu.hackapp.model.EventEntity
 import ru.pnzgu.hackapp.repositories.EventRepository
+import ru.pnzgu.hackapp.util.generateSnowflake
 
 @Service
 class EventService(private val eventRepository: EventRepository) {
@@ -26,7 +27,7 @@ class EventService(private val eventRepository: EventRepository) {
 
     private fun EventDto.toEntity(): EventEntity =
         EventEntity(
-            eventid = 500,
+            eventid = generateSnowflake(),
             eventname = this.eventname,
             content = this.content,
             author = this.author,
