@@ -8,7 +8,13 @@ import ru.pnzgu.hackapp.repositories.EventRepository
 class EventService(private val eventRepository: EventRepository) {
     fun getAllEvents() = eventRepository.findAll()
 
-    fun getEventbyId(eventid: Long): List<EventEntity> {
-        return eventRepository.findEventEntitiesByEventid(eventid)
+    fun findEventbyId(id: Long): List<EventEntity> {
+        return eventRepository.findEventEntitiesByEventid(id)
+    }
+
+    fun ratingAdd(id: Long, rating: Int) {
+        val list = eventRepository.findByEventid(id)
+        list.rating = rating
+        eventRepository.save(list)
     }
 }
