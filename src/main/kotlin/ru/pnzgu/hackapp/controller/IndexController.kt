@@ -29,4 +29,9 @@ class IndexController(private val eventService: EventService, private val userSe
     fun changeEventRating(@PathVariable id : Long){
         eventService.ratingAdd(id, 2)
     }
+
+    @PostMapping("/api/newevent", consumes = [MediaType.APPLICATION_JSON_VALUE])
+    fun createNewEvent(@RequestBody eventDto: EventDto) : Int{
+        return eventService.createEvent(eventDto)
+    }
 }

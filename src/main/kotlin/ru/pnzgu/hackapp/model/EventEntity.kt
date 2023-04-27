@@ -2,7 +2,6 @@ package ru.pnzgu.hackapp.model
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
-import jdk.jfr.Event
 import ru.pnzgu.hackapp.dto.EventDto
 import java.time.Instant
 
@@ -16,7 +15,11 @@ data class EventEntity(
     val location: String,
     val date: Instant,
     var rating: Int,
+    var firstplace: String? = null,
+    var secondplace: String? = null,
+    var thirdplace: String? = null,
 ) {
-    fun toDto(): EventDto = EventDto(eventid, eventname, content, author, location, date, rating)
+    fun toDto(): EventDto =
+        EventDto(eventid, eventname, content, author, location, date, rating, firstplace, secondplace, thirdplace)
 
 }

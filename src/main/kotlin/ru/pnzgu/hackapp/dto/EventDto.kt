@@ -9,6 +9,9 @@ data class EventDto(
     val author: String,
     val location: String,
     val date: Instant,
-    val rating: Int? = null,
+    var rating: Int? = null,
+    var firstplace: String? = null,
+    var secondplace: String? = null,
+    var thirdplace: String? = null,
 )
 
