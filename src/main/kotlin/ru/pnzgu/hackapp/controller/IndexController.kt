@@ -4,11 +4,14 @@ import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 import ru.pnzgu.hackapp.dto.EventDto
 import ru.pnzgu.hackapp.dto.EventResultDto
+import ru.pnzgu.hackapp.dto.TeamDto
 import ru.pnzgu.hackapp.model.EventEntity
+import ru.pnzgu.hackapp.model.TeamEntity
 import ru.pnzgu.hackapp.service.EventService
+import ru.pnzgu.hackapp.service.TeamService
 
 @RestController
-class IndexController(private val eventService: EventService) {
+class IndexController(private val eventService: EventService, private val teamService: TeamService) {
 
     @GetMapping("/api/event/{id}", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getEventById(@PathVariable id: Long): List<EventDto> {
@@ -34,5 +37,8 @@ class IndexController(private val eventService: EventService) {
         return eventService.eventResult(id, eventResultDto)
     }
 
-
+    @PostMapping("/api/chooseteam/", consumes = [MediaType.APPLICATION_JSON_VALUE], produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun teamChoosing(teamDto: TeamDto) : List<TeamEntity>{
+        TODO() //return teamService.choosingteam(teamDto).map(TeamEntity::toDto())
+    }
 }
