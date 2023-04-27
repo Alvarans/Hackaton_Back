@@ -3,17 +3,16 @@ package ru.pnzgu.hackapp.dto
 import java.time.Instant
 
 data class UserDto(
-    //reginfo
-    val id: Long,
+    val userid: Long,
     val password: String,
     var email: String,
     val role: String,
-    var rating: Int? = null,
-    val results: Int? = null,
     val surname: String,
     val username: String,
+    val lastname: String,
+    var rating: Int? = null,
     var team: String? = null,
-    var passportserandnum: Int? = null,
+    var passportserandnum: Long? = null,
     var passportregloc: String? = null,
     var passportcreatedate: Instant? = null,
     var passportcode: Int? = null,
@@ -22,6 +21,4 @@ data class UserDto(
     var addressstreet: String? = null,
     var addresshouse: String? = null,
     var addressappartment: Int? = null,
-    var medpolisnum: Int? = null,
-
-)
+    )

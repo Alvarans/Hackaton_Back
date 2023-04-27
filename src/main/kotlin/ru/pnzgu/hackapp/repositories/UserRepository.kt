@@ -7,6 +7,8 @@ import ru.pnzgu.hackapp.model.UserEntity
 @Repository
 interface UserRepository : JpaRepository<UserEntity, Long> {
 
-    fun findUserEntitiesById(id: Long): List<UserEntity>
+    fun findUserEntitiesByUserid(id: Long): List<UserEntity>
+
+    fun findUserEntityByUserid(id: Long): UserEntity
     fun findUserEntitiesByUsername(username: String): UserEntity
 }
