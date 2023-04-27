@@ -1,6 +1,5 @@
 package ru.pnzgu.hackapp.service
 
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import ru.pnzgu.hackapp.dto.UserAdditionalInfoDto
@@ -10,25 +9,21 @@ import ru.pnzgu.hackapp.repositories.UserRepository
 import ru.pnzgu.hackapp.util.generateSnowflake
 
 @Service
-class UserService(private val userRepository: UserRepository, private val passwordEncoder: BCryptPasswordEncoder) {
+class UserService(
+    private val userRepository: UserRepository,
+    private val passwordEncoder: BCryptPasswordEncoder
+) {
 
-    fun testPassword(password: String, encrypted: String): Boolean {
-        return passwordEncoder.matches(password, encrypted)
-    }
+    fun testPassword(password: String, encrypted: String) =
+        passwordEncoder.matches(password, encrypted)
 
-    fun processPassword(password: String): String {
-        return passwordEncoder.encode(password)
-    }
+    fun processPassword(password: String) = passwordEncoder.encode(password)
 
-    fun findUserById(id: Long): List<UserEntity> {
-        return userRepository.findUserEntitiesByUserid(id)
-    }
+    fun findUserById(id: Long) = userRepository.findUserEntitiesByUserid(id)
 
-    fun createUser(userDto: UserDto): Long {
-        return userRepository.save(userDto.toEntity()).userid
-    }
+    fun createUser(userDto: UserDto) = userRepository.save(userDto.toEntity()).userid
 
-    private fun UserDto.toEntity(): UserEntity =
+    private fun UserDto.toEntity() =
         UserEntity(
             userid = generateSnowflake(),
             password = this.password,
@@ -39,24 +34,7 @@ class UserService(private val userRepository: UserRepository, private val passwo
             lastname = this.lastname
         )
 
-    fun registerUser(userDto: UserDto): Boolean {
-        if (userDto.userid != null)
-            return userRepository.findByIdOrNull(userDto.userid) != null
-
-        val entity = UserEntity(
-            userid = userDto.userid,
-            password = userDto.password,
-            email = userDto.email,
-            role = userDto.role,
-            surname = userDto.surname,
-            username = userDto.username,
-            lastname = userDto.lastname
-        )
-        return userRepository.runCatching { saveAndFlush(entity) }
-            .isSuccess
-    }
-
-    fun lkconfirm(id: Long, userAdditionalInfoDto: UserAdditionalInfoDto) : String{
+    fun lkconfirm(id: Long, userAdditionalInfoDto: UserAdditionalInfoDto): String {
         val info = userRepository.findUserEntityByUserid(id)
         info.team = userAdditionalInfoDto.team
         info.passportserandnum = userAdditionalInfoDto.passportserandnum
@@ -71,5 +49,4 @@ class UserService(private val userRepository: UserRepository, private val passwo
         userRepository.save(info)
         return "success"
     }
-
 }
