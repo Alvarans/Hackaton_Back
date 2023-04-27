@@ -48,7 +48,6 @@ class SecurityConfiguration(private val userDetailsService: UserDetailsService) 
         return authProvider
     }
 
-    @Throws(Exception::class)
     protected fun configure(auth: AuthenticationManagerBuilder) {
         auth.authenticationProvider(authenticationProvider())
     }
