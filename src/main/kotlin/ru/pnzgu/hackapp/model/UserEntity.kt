@@ -18,5 +18,5 @@ class UserEntity(
     val username: String,
     val team: String,
 ) {
-    fun toDto() = UserDto(id, login, password, email, role, rating, results, surname, username, team)
+    fun toDto() : UserDto = UserDto(id, login, password, email, role, rating, results, surname, username, team)
 }
