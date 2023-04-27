@@ -30,6 +30,6 @@ class UserController(private val userService: UserService) {
 
     @DeleteMapping("/api/deleteuser/{id}")
     fun deleteUser(@PathVariable id : Long) {
-        userService.
+        userService.deleteUser(id)
     }
 }
