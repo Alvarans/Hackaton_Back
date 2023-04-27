@@ -16,5 +16,5 @@ class IndexController(private val eventService: EventService) {
         return eventService.getEventbyId(id).map(EventEntity::toDto)
     }
     @GetMapping("/api/getallevents", MediaType.APPLICATION_JSON_VALUE)
-    fun getALlEventsApi() = eventService.getAllEvents()
+    fun getAllEventsApi() = eventService.getAllEvents().map(EventEntity::toDto)
 }
