@@ -2,6 +2,7 @@ package ru.pnzgu.hackapp.model
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
+import ru.pnzgu.hackapp.dto.UserDto
 
 @Entity(name="users")
 class UserEntity(
@@ -17,4 +18,5 @@ class UserEntity(
     val username: String,
     val team: String,
 ) {
+    fun toDto() = UserDto(id, login, password, email, role, rating, results, surname, username, team)
 }
