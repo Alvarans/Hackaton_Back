@@ -20,9 +20,9 @@ class EventService(private val eventRepository: EventRepository) {
     }
 
     fun createEvent(eventDto: EventDto) : Int{
-       // return eventRepository.save(eventDto.toEntity()).eventid
+       TODO()// return eventRepository.save(eventDto.toEntity()).eventid
     }
 
     private fun EventDto.toEntity(): EventEntity=
-        EventEntity(eventid=500,eventname = this.eventname,content = this.content, author=this.author, location = this.location, date = this.date)
+        TODO()//EventEntity(eventid=500,eventname = this.eventname,content = this.content, author=this.author, location = this.location, date = this.date)
 }
