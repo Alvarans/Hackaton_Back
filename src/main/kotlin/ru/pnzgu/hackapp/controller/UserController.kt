@@ -27,4 +27,9 @@ class UserController(private val userService: UserService) {
     @PostMapping("/api/lkinfoconfirm/{id}", MediaType.APPLICATION_JSON_VALUE)
     fun lkinfoconfirm(@PathVariable id: Long, @RequestBody userAdditionalInfoDto: UserAdditionalInfoDto) =
         userService.lkconfirm(id,userAdditionalInfoDto)
+
+    @DeleteMapping("/api/deleteuser/{id}")
+    fun deleteUser(@PathVariable id : Long) {
+        userService.
+    }
 }

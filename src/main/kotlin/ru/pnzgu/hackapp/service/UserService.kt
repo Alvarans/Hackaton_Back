@@ -23,6 +23,9 @@ class UserService(
 
     fun createUser(userDto: UserDto) = userRepository.save(userDto.toEntity()).userid
 
+    fun deleteUser(id: Long){
+        userRepository.deleteById(id)
+    }
     private fun UserDto.toEntity() =
         UserEntity(
             userid = generateSnowflake(),
