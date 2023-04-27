@@ -1,6 +1,11 @@
-package ru.pnzgu.hackapp.dto
+package ru.pnzgu.hackapp.model
 
-data class UserDto(
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
+
+@Entity(name="users")
+class UserEntity(
+    @Id
     val id: Long,
     val login: String,
     val password: String,
@@ -11,4 +16,5 @@ data class UserDto(
     val surname: String,
     val username: String,
     val team: String,
-)
+) {
+}
