@@ -25,8 +25,27 @@ data class UserEntity(
     var addresscity: String? = null,
     var addressstreet: String? = null,
     var addresshouse: String? = null,
-    var addressappartment: Int,
+    var addressappartment: Int? = null,
     var medpolisnum: Int? = null,
 ) {
-    fun toDto(): UserDto = UserDto(id, password, email, role, rating, results, surname, username, team,passportserandnum, passportregloc, passportcreatedate, passportcode, addresscountry, addresscity, addressstreet, addresshouse, addressappartment)
+    fun toDto(): UserDto = UserDto(
+        id,
+        password,
+        email,
+        role,
+        rating,
+        results,
+        surname,
+        username,
+        team,
+        passportserandnum,
+        passportregloc,
+        passportcreatedate,
+        passportcode,
+        addresscountry,
+        addresscity,
+        addressstreet,
+        addresshouse,
+        addressappartment
+    )
 }

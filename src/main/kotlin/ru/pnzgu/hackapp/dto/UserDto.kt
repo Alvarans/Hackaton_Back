@@ -21,7 +21,7 @@ data class UserDto(
     var addresscity: String? = null,
     var addressstreet: String? = null,
     var addresshouse: String? = null,
-    var addressappartment: Int,
+    var addressappartment: Int? = null,
     var medpolisnum: Int? = null,
 
 )
