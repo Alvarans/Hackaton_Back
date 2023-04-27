@@ -11,34 +11,30 @@ import ru.pnzgu.hackapp.service.EventService
 import ru.pnzgu.hackapp.service.TeamService
 
 @RestController
-class IndexController(private val eventService: EventService, private val teamService: TeamService) {
+class IndexController(
+    private val eventService: EventService,
+    private val teamService: TeamService
+) {
 
-    @GetMapping("/api/event/{id}", produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun getEventById(@PathVariable id: Long): List<EventDto> {
-        return eventService.findEventbyId(id).map(EventEntity::toDto)
-    }
+    @GetMapping("/api/event/{id}", MediaType.APPLICATION_JSON_VALUE)
+    fun getEventById(@PathVariable id: Long) =
+        eventService.findEventbyId(id).map(EventEntity::toDto)
 
-    @GetMapping("/api/getallevents", produces = [MediaType.APPLICATION_JSON_VALUE])
+    @GetMapping("/api/getallevents", MediaType.APPLICATION_JSON_VALUE)
     fun getAllEventsApi() = eventService.getAllEvents().map(EventEntity::toDto)
 
-
     @GetMapping("/api/changeeventrating/{id}")
-    fun changeEventRating(@PathVariable id: Long) {
-        eventService.ratingAdd(id, 2)
-    }
+    fun changeEventRating(@PathVariable id: Long) = eventService.ratingAdd(id, 2)
 
-    @PostMapping("/api/newevent", consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun createNewEvent(@RequestBody eventDto: EventDto): Long {
-        return eventService.createEvent(eventDto)
-    }
+    @PostMapping("/api/newevent", MediaType.APPLICATION_JSON_VALUE)
+    fun createNewEvent(@RequestBody eventDto: EventDto) = eventService.createEvent(eventDto)
 
-    @PostMapping("/api/eventresult/{id}", consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun putEventResult(@PathVariable id: Long, @RequestBody eventResultDto: EventResultDto): String {
-        return eventService.eventResult(id, eventResultDto)
-    }
+    @PostMapping("/api/eventresult/{id}", MediaType.APPLICATION_JSON_VALUE)
+    fun putEventResult(@PathVariable id: Long, @RequestBody eventResultDto: EventResultDto) =
+        eventService.eventResult(id, eventResultDto)
 
-    @PostMapping("/api/chooseteam/", consumes = [MediaType.APPLICATION_JSON_VALUE], produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun teamChoosing(teamDto: TeamDto) : List<TeamEntity>{
+    @PostMapping("/api/chooseteam/", MediaType.APPLICATION_JSON_VALUE)
+    fun teamChoosing(teamDto: TeamDto): List<TeamEntity> {
         TODO() //return teamService.choosingteam(teamDto).map(TeamEntity::toDto())
     }
 }
