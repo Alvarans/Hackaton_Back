@@ -4,8 +4,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import ru.pnzgu.hackapp.dto.UserAdditionalInfoDto
 import ru.pnzgu.hackapp.dto.UserDto
+import ru.pnzgu.hackapp.dto.UserLoginDto
 import ru.pnzgu.hackapp.model.UserEntity
 import ru.pnzgu.hackapp.repositories.UserRepository
+import ru.pnzgu.hackapp.util.NotFoundException
 import ru.pnzgu.hackapp.util.generateSnowflake
 
 @Service
@@ -23,6 +25,10 @@ class UserService(
 
     fun createUser(userDto: UserDto) = userRepository.save(userDto.toEntity()).userid
 
+    fun userLogin(loginDto: UserLoginDto):Long{
+        val users = userRepository.findUserEntitiesByEmailAndPassword(loginDto.email, loginDto.email).orElseThrow { NotFoundException("User not found") }
+        return users.userid
+    }
     fun deleteUser(id: Long){
         userRepository.deleteById(id)
     }

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*
 import ru.pnzgu.hackapp.dto.EventDto
 import ru.pnzgu.hackapp.dto.EventResultDto
 import ru.pnzgu.hackapp.dto.TeamDto
+import ru.pnzgu.hackapp.dto.UserLoginDto
 import ru.pnzgu.hackapp.model.EventEntity
 import ru.pnzgu.hackapp.model.TeamEntity
 import ru.pnzgu.hackapp.service.EventService

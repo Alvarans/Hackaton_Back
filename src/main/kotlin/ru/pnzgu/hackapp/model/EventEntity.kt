@@ -11,6 +11,7 @@ data class EventEntity(
     @Id
     val eventid: Long = generateSnowflake(),
     val eventname: String,
+    val eventcase: String,
     var content: String,
     val author: String,
     val location: String,
@@ -21,6 +22,6 @@ data class EventEntity(
     var thirdplace: String? = null,
 ) {
     fun toDto(): EventDto =
-        EventDto(eventid, eventname, content, author, location, date, rating, firstplace, secondplace, thirdplace)
+        EventDto(eventid, eventname,eventcase, content, author, location, date, rating, firstplace, secondplace, thirdplace)
 
 }

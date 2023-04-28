@@ -29,6 +29,7 @@ class EventService(private val eventRepository: EventRepository) {
         EventEntity(
             eventid = generateSnowflake(),
             eventname = this.eventname,
+            eventcase = this.eventcase,
             content = this.content,
             author = this.author,
             location = this.location,

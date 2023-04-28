@@ -11,4 +11,6 @@ interface UserRepository : JpaRepository<UserEntity, Long> {
     fun findUserEntitiesByUsername(username: String): Optional<UserEntity>
     fun findUserEntitiesByUserid(id: Long): List<UserEntity>
     fun findUserEntityByUserid(id: Long): UserEntity
+
+    fun findUserEntitiesByEmailAndPassword(email: String, password: String) : Optional<UserEntity>
 }
