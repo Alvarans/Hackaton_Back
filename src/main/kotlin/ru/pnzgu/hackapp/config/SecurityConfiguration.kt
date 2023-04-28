@@ -16,7 +16,6 @@ import org.springframework.security.web.SecurityFilterChain
 @EnableWebSecurity
 class SecurityConfiguration(private val userDetailsService: UserDetailsService) {
 
-
     @Bean
     fun apiFilterChain(http: HttpSecurity): SecurityFilterChain {
         http.invoke {
@@ -29,7 +28,7 @@ class SecurityConfiguration(private val userDetailsService: UserDetailsService) 
         }
         return http.build()
     }
-/*
+
     @Bean
     fun formLoginFilterChain(http: HttpSecurity): SecurityFilterChain {
         http.invoke {
@@ -40,7 +39,7 @@ class SecurityConfiguration(private val userDetailsService: UserDetailsService) 
         }
         return http.build()
     }
-*/
+
     @Bean
     fun authenticationProvider(): DaoAuthenticationProvider {
         val authProvider = DaoAuthenticationProvider()
