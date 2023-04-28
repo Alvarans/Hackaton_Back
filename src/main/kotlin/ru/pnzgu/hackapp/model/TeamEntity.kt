@@ -8,16 +8,22 @@ import ru.pnzgu.hackapp.dto.TeamDto
 @Entity(name = "teams")
 data class TeamEntity(
     @Id val teamid: Long,
-    val name: Long,
+    val name: String,
     val description: String,
     val skills: String,
     val firstmember: String,
-    val secondmember: String,
-    val thirdmember: String,
-    val fourthmember: String,
-    val fifthmember: String
+    val firstmemberrole: String,
+    val secondmember: String? = null,
+    val secondmemberrole: String? = null,
+    val thirdmember: String? = null,
+    val thirdmemberrole: String? = null,
+    val fourthmember: String? = null,
+    val fourthmemberrole: String? = null,
+    val fifthmember: String? = null,
+    val fifthmemberrole: String? = null,
+    val lider: String? = null
 )
 {
     fun toDto(): TeamDto =
-        TeamDto(teamid, name, description, skills, firstmember, secondmember, thirdmember, fourthmember, fifthmember)
+        TeamDto(teamid, name, description, skills, firstmember, firstmemberrole, secondmember, secondmemberrole, thirdmember, thirdmemberrole, fourthmember, fourthmemberrole, lider)
 }

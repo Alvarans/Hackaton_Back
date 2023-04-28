@@ -37,4 +37,15 @@ class IndexController(
     fun teamChoosing(@PathVariable name : String) : List<TeamDto> {
         return teamService.choosingTeam(name).map(TeamEntity::toDto)
     }
+/*
+    @GetMapping("/api/userteam/{name}", produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun userTeams(@PathVariable name: String)  : List<TeamDto> {
+        return teamService.teams(name).map(TeamEntity::toDto)
+    }
+    */
+
+    @PostMapping("/api/newteam", consumes = [MediaType.APPLICATION_JSON_VALUE])
+    fun createNewTeam(teamDto: TeamDto) : Long {
+        return teamService.createTeam(teamDto)
+    }
 }

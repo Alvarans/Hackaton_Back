@@ -7,4 +7,6 @@ import ru.pnzgu.hackapp.model.TeamEntity
 interface TeamRepository : JpaRepository<TeamEntity,Long>{
 
     fun getTeamEntitiesByName(name: String) : List<TeamEntity>
+
+    //fun findTeamEntitiesByFirstmemberOrSecondmemberOrThirdmemberOrFourthmemberOrFifthmember(name: String) : List<TeamEntity>
 }
