@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*
 import ru.pnzgu.hackapp.dto.EventDto
 import ru.pnzgu.hackapp.dto.EventResultDto
 import ru.pnzgu.hackapp.dto.TeamDto
-import ru.pnzgu.hackapp.dto.UserLoginDto
 import ru.pnzgu.hackapp.model.EventEntity
 import ru.pnzgu.hackapp.model.TeamEntity
 import ru.pnzgu.hackapp.service.EventService
@@ -35,18 +34,18 @@ class IndexController(
         eventService.eventResult(id, eventResultDto)
 
     @GetMapping("/api/team/{name}", produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun teamChoosing(@PathVariable name : String) : List<TeamDto> {
+    fun teamChoosing(@PathVariable name: String): List<TeamDto> {
         return teamService.choosingTeam(name).map(TeamEntity::toDto)
     }
-/*
-    @GetMapping("/api/userteam/{name}", produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun userTeams(@PathVariable name: String)  : List<TeamDto> {
-        return teamService.teams(name).map(TeamEntity::toDto)
-    }
-    */
+    /*
+        @GetMapping("/api/userteam/{name}", produces = [MediaType.APPLICATION_JSON_VALUE])
+        fun userTeams(@PathVariable name: String)  : List<TeamDto> {
+            return teamService.teams(name).map(TeamEntity::toDto)
+        }
+        */
 
     @PostMapping("/api/newteam", consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun createNewTeam(teamDto: TeamDto) : Long {
+    fun createNewTeam(teamDto: TeamDto): Long {
         return teamService.createTeam(teamDto)
     }
 }

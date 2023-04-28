@@ -22,6 +22,18 @@ data class EventEntity(
     var thirdplace: String? = null,
 ) {
     fun toDto(): EventDto =
-        EventDto(eventid, eventname,eventcase, content, author, location, date, rating, firstplace, secondplace, thirdplace)
+        EventDto(
+            eventid,
+            eventname,
+            eventcase,
+            content,
+            author,
+            location,
+            date,
+            rating,
+            firstplace,
+            secondplace,
+            thirdplace
+        )
 
 }

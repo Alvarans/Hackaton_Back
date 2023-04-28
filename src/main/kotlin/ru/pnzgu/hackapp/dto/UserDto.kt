@@ -21,4 +21,4 @@ data class UserDto(
     var addressstreet: String? = null,
     var addresshouse: String? = null,
     var addressappartment: Int? = null,
-    )
+)

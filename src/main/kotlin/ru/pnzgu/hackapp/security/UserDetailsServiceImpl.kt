@@ -9,6 +9,6 @@ import ru.pnzgu.hackapp.util.NotFoundException
 @Service
 class UserDetailsServiceImpl(private val userRepository: UserRepository) : UserDetailsService {
     override fun loadUserByUsername(username: String): UserDetails = SecurityUser(
-            userRepository.findUserEntitiesByUsername(username)
-                .orElseThrow { NotFoundException("User not found") })
+        userRepository.findUserEntitiesByUsername(username)
+            .orElseThrow { NotFoundException("User not found") })
 }

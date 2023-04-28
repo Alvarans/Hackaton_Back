@@ -25,13 +25,16 @@ class UserService(
 
     fun createUser(userDto: UserDto) = userRepository.save(userDto.toEntity()).userid
 
-    fun userLogin(loginDto: UserLoginDto):Long{
-        val users = userRepository.findUserEntitiesByEmailAndPassword(loginDto.email, loginDto.email).orElseThrow { NotFoundException("User not found") }
+    fun userLogin(loginDto: UserLoginDto): Long {
+        val users = userRepository.findUserEntitiesByEmailAndPassword(loginDto.email, loginDto.email)
+            .orElseThrow { NotFoundException("User not found") }
         return users.userid
     }
-    fun deleteUser(id: Long){
+
+    fun deleteUser(id: Long) {
         userRepository.deleteById(id)
     }
+
     private fun UserDto.toEntity() =
         UserEntity(
             userid = generateSnowflake(),

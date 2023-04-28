@@ -8,11 +8,11 @@ import ru.pnzgu.hackapp.util.generateSnowflake
 
 @Service
 class TeamService(private val teamRepository: TeamRepository) {
-    fun choosingTeam(name : String) : List<TeamEntity>{
+    fun choosingTeam(name: String): List<TeamEntity> {
         return teamRepository.getTeamEntitiesByName(name)
     }
 
-    fun createTeam(teamDto: TeamDto):Long{
+    fun createTeam(teamDto: TeamDto): Long {
         return teamRepository.save(teamDto.toEntity()).teamid
     }
     /*

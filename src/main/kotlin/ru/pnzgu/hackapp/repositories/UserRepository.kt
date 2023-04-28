@@ -3,7 +3,7 @@ package ru.pnzgu.hackapp.repositories
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import ru.pnzgu.hackapp.model.UserEntity
-import java.util.Optional
+import java.util.*
 
 @Repository
 interface UserRepository : JpaRepository<UserEntity, Long> {
@@ -12,5 +12,5 @@ interface UserRepository : JpaRepository<UserEntity, Long> {
     fun findUserEntitiesByUserid(id: Long): List<UserEntity>
     fun findUserEntityByUserid(id: Long): UserEntity
 
-    fun findUserEntitiesByEmailAndPassword(email: String, password: String) : Optional<UserEntity>
+    fun findUserEntitiesByEmailAndPassword(email: String, password: String): Optional<UserEntity>
 }

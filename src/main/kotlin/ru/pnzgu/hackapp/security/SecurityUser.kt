@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails
 import ru.pnzgu.hackapp.model.UserEntity
 
 
-class SecurityUser(private val user : UserEntity) : UserDetails {
+class SecurityUser(private val user: UserEntity) : UserDetails {
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> =
         mutableListOf(SimpleGrantedAuthority(user.role))
 
